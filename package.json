@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@better-fetch/fetch": "^1.1.18",
     "@neondatabase/serverless": "^1.0.1",
     "ai": "^4.3.16",
     "better-auth": "^1.2.10",
@@ -16,7 +17,8 @@
     "drizzle-orm": "^0.44.2",
     "next": "15.3.4",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "zod": "^3.25.67"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
