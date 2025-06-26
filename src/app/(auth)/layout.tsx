@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { SplitText } from "gsap/all";
 import Link from "next/link";
+import Models from "./components/models";
 
 gsap.registerPlugin(SplitText);
 
@@ -92,6 +92,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           Built with Nextjs, TailwindCSS, better-auth, drizzle, neondb, gsap,
           and Vercel AI SDK
         </p>
+
+        <Models />
 
         <footer
           id="footer"

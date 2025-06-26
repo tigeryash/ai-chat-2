@@ -11,6 +11,7 @@
   "dependencies": {
     "@better-fetch/fetch": "^1.1.18",
     "@gsap/react": "^2.1.2",
+    "@lobehub/icons": "^2.7.0",
     "@neondatabase/serverless": "^1.0.1",
     "ai": "^4.3.16",
     "better-auth": "^1.2.10",
