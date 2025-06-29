@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+.root {
+  isolation: isolate;
+}
+
 .gradient {
   background: #36365e;
   background: linear-gradient(

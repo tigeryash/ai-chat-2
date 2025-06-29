@@ -21,8 +21,8 @@ const Models = () => {
   const [hoveredModel, setHoveredModel] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-2 gap-4 justify-center">
-      <OpenAI size={160} className="" />
+    <div className="grid grid-cols-4 gap-4 justify-center">
+      <OpenAI size={120} className="" />
       {Object.entries(modelIcons).map(([model, { Icon, ColorIcon }]) => (
         <div
           key={model}
@@ -30,9 +30,9 @@ const Models = () => {
           onMouseLeave={() => setHoveredModel(null)}
         >
           {hoveredModel === model ? (
-            <ColorIcon size={160} />
+            <ColorIcon size={120} />
           ) : (
-            <Icon size={160} />
+            <Icon size={120} />
           )}
         </div>
       ))}

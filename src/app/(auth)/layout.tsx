@@ -114,7 +114,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div
         id="auth"
-        className="flex-1/3 backdrop-blur-3xl min-h-screen shadow-2xl bg-slate-500 opacity-50"
+        className="flex-1/3 min-h-screen inset-shadow-lg bg-slate-300 "
       >
         {children}
       </div>

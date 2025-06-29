@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@base-ui-components/react": "1.0.0-beta.0",
     "@better-fetch/fetch": "^1.1.18",
     "@gsap/react": "^2.1.2",
     "@lobehub/icons": "^2.7.0",
