@@ -29,7 +29,7 @@ const Login = () => {
   };
   return (
     <Form
-      className="w-full max-w-md space-y-4 flex flex-col items-center justify-center h-[calc(100vh-10rem)]"
+      className="w-full max-w-md space-y-4 flex flex-col items-center justify-center "
       errors={errors}
       onClearErrors={setErrors}
       onSubmit={async (event) => {

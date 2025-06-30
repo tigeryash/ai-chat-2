@@ -6,10 +6,13 @@ import { useRef } from "react";
 import { SplitText } from "gsap/all";
 import Link from "next/link";
 import Models from "./components/models";
+import OAuthButtons from "./components/oauthbuttons";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(SplitText);
 
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
+  const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     if (!containerRef.current) return;
@@ -114,9 +117,14 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 
       <div
         id="auth"
-        className="flex-1/3 min-h-screen inset-shadow-lg bg-slate-300 "
+        className="flex-1/3 min-h-screen inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10"
       >
+        <h2 className="text-4xl font-semibold capitalize">
+          {pathname.split("/")}
+        </h2>
         {children}
+
+        <OAuthButtons />
       </div>
     </main>
   );
