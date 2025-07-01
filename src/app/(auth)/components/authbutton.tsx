@@ -17,8 +17,8 @@ const AuthButton = ({
   return (
     <button
       className={cn(
-        "py-3 px-4 rounded-xl border border-black flex items-center gap-2hover:bg-white",
-        " hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-white text-lg ",
+        "py-3 px-4 rounded-xl border border-black flex items-center gap-2 hover:bg-white ",
+        " hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg hover:border-white text-lg overflow-hidden cursor-pointer",
         className
       )}
     >

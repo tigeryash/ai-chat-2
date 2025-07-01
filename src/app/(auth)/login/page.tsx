@@ -15,7 +15,7 @@ const Login = () => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const result = schema.safeParse(Object.fromEntries(formData as any));
+    const result = schema.safeParse(Object.fromEntries(formData));
 
     if (!result.success) {
       return {

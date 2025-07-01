@@ -1,5 +1,7 @@
 "use server";
 import { auth } from "@/lib/auth"
+import { createAuthClient } from "better-auth/client"
+const authClient =  createAuthClient()
  
 const signIn = async () => {
     await auth.api.signInEmail({
@@ -21,3 +23,9 @@ export const signUp = async () => {
 }
 
 export default signIn
+
+export const signInWithProvider = async (provider: string) => {
+    const data = await authClient.signIn.social({
+        provider
+    })
+}

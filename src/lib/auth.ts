@@ -2,7 +2,7 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { db } from "@/db/drizzle";
 import { nextCookies } from "better-auth/next-js";
-
+import { phoneNumber } from "better-auth/plugins";
  
 export const auth = betterAuth({
     database: drizzleAdapter(db, {
@@ -39,5 +39,9 @@ export const auth = betterAuth({
            clientSecret: process.env.DISCORD_CLIENT_SECRET as string, 
         },
     },
-    plugins: [nextCookies()]  
+    plugins: [ phoneNumber({  
+        sendOTP: ({ phoneNumber, code }, request) => { 
+            // Implement sending OTP code via SMS
+        } 
+    }) ,nextCookies()]  
 });

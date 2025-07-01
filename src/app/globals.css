@@ -1,7 +1,16 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 .root {
   isolation: isolate;
+}
+
+.auth-button {
+  overflow: hidden;
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .gradient {
