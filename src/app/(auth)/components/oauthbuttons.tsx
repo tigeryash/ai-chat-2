@@ -3,10 +3,11 @@ import React, { useRef } from "react";
 import AuthButton from "./authbutton";
 import { Google } from "@lobehub/icons";
 import { Github } from "@lobehub/icons";
-import { Phone } from "lucide-react";
+import { Phone, User } from "lucide-react";
 import DiscordIcon from "../../../../public/discord-icon.svg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { signInWithProvider } from "../../../../server/users";
 
 const OAuthButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,18 +38,41 @@ const OAuthButtons = () => {
           or sign in with
         </div>
       </div>
-      <div ref={containerRef} className="grid grid-cols-2  ">
+      <div ref={containerRef} className="grid grid-cols-2 ">
         <div className="auth-button ">
-          <AuthButton Icon={Google} name="google" />
+          <AuthButton
+            Icon={Google}
+            name="google"
+            onClick={() => signInWithProvider("google")}
+          />
         </div>
         <div className="auth-button ">
-          <AuthButton Icon={Github} name="github" />
+          <AuthButton
+            Icon={Github}
+            name="github"
+            onClick={() => signInWithProvider("github")}
+          />
         </div>
         <div className="auth-button ">
-          <AuthButton image={DiscordIcon} name="discord" />
+          <AuthButton
+            image={DiscordIcon}
+            name="discord"
+            onClick={() => signInWithProvider("discord")}
+          />
         </div>
         <div className="auth-button ">
-          <AuthButton Icon={Phone} name="phone" />
+          <AuthButton
+            Icon={Phone}
+            name="phone"
+            onClick={() => signInWithProvider("phone")}
+          />
+        </div>
+        <div className="auth-button col-span-2 mx-auto">
+          <AuthButton
+            Icon={User}
+            name="anonymous"
+            onClick={() => signInWithProvider("anonymous")}
+          />
         </div>
       </div>
     </>

@@ -2,7 +2,9 @@
 import { z } from "zod";
 import { Field } from "@base-ui-components/react/field";
 import { Form } from "@base-ui-components/react/form";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const schema = z.object({
   email: z.string().email(),
@@ -10,7 +12,7 @@ const schema = z.object({
 });
 const Login = () => {
   const [errors, setErrors] = useState({});
-
+  const formRef = useRef<HTMLFormElement>(null);
   const submitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -27,8 +29,29 @@ const Login = () => {
       errors: {},
     };
   };
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".form-root",
+        {
+          opacity: 0,
+          y: 50,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          stagger: 0.1,
+          ease: "power4.inOut",
+          delay: 0.1,
+        }
+      );
+    },
+    { scope: formRef }
+  );
   return (
     <Form
+      ref={formRef}
       className="w-full max-w-md space-y-4 flex flex-col items-center justify-center "
       errors={errors}
       onClearErrors={setErrors}
@@ -37,7 +60,10 @@ const Login = () => {
         setErrors(response.errors);
       }}
     >
-      <Field.Root name="email" className="flex flex-col w-[20rem] space-y-2">
+      <Field.Root
+        name="email"
+        className="flex flex-col w-[20rem] space-y-2 form-root"
+      >
         <Field.Label className="text-xl font-semibold text-sky-900">
           Email
         </Field.Label>
@@ -48,7 +74,10 @@ const Login = () => {
         />
         <Field.Error className="" />
       </Field.Root>
-      <Field.Root name="password" className="flex flex-col w-[20rem] space-y-2">
+      <Field.Root
+        name="password"
+        className="flex flex-col w-[20rem] space-y-2 form-root"
+      >
         <Field.Label className="text-xl font-semibold text-sky-900">
           Password
         </Field.Label>
@@ -59,7 +88,12 @@ const Login = () => {
         />
         <Field.Error className="" />
       </Field.Root>
-      <button type="submit" className="">
+      <button
+        type="submit"
+        className="py-3 px-4 rounded-xl border border-black hover:bg-white w-[20rem]
+         hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg 
+         hover:border-white text-lg overflow-hidden cursor-pointer"
+      >
         Login
       </button>
     </Form>
