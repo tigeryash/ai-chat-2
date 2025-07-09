@@ -115,16 +115,15 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         </footer>
       </div>
 
-      <div
-        id="auth"
-        className="flex-1/3 min-h-screen inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10"
-      >
-        <h2 className="text-4xl font-semibold capitalize">
-          {pathname.split("/")}
-        </h2>
-        {children}
+      <div id="auth" className="flex-1/3 min-h-screen p-5 ">
+        <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full">
+          <h2 className="text-4xl font-semibold capitalize">
+            {pathname.split("/")}
+          </h2>
+          {children}
 
-        <OAuthButtons />
+          <OAuthButtons />
+        </div>
       </div>
     </main>
   );

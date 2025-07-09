@@ -7,7 +7,10 @@ import { Phone, User } from "lucide-react";
 import DiscordIcon from "../../../../public/discord-icon.svg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { signInWithProvider } from "../../../../server/users";
+import {
+  signInAnonymously,
+  signInWithProvider,
+} from "../../../../server/users";
 
 const OAuthButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +34,14 @@ const OAuthButtons = () => {
     },
     { scope: containerRef }
   );
+
+  const handleProviderSignIn = async (provider: string) => {
+    await signInWithProvider(provider);
+  };
+
+  const handleAnonymousSignIn = async () => {
+    await signInAnonymously();
+  };
   return (
     <>
       <div className="border-t border-black/30 h-[1px] w-[85%] mx-auto relative">
@@ -43,35 +54,35 @@ const OAuthButtons = () => {
           <AuthButton
             Icon={Google}
             name="google"
-            onClick={() => signInWithProvider("google")}
+            onClick={() => handleProviderSignIn("google")}
           />
         </div>
         <div className="auth-button ">
           <AuthButton
             Icon={Github}
             name="github"
-            onClick={() => signInWithProvider("github")}
+            onClick={() => handleProviderSignIn("github")}
           />
         </div>
         <div className="auth-button ">
           <AuthButton
             image={DiscordIcon}
             name="discord"
-            onClick={() => signInWithProvider("discord")}
+            onClick={() => handleProviderSignIn("discord")}
           />
         </div>
         <div className="auth-button ">
           <AuthButton
             Icon={Phone}
             name="phone"
-            onClick={() => signInWithProvider("phone")}
+            onClick={() => handleProviderSignIn("phone")}
           />
         </div>
         <div className="auth-button col-span-2 mx-auto">
           <AuthButton
             Icon={User}
             name="anonymous"
-            onClick={() => signInWithProvider("anonymous")}
+            onClick={handleAnonymousSignIn}
           />
         </div>
       </div>
