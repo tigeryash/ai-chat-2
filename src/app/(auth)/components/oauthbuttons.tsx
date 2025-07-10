@@ -49,8 +49,11 @@ const OAuthButtons = () => {
           or sign in with
         </div>
       </div>
-      <div ref={containerRef} className="grid grid-cols-2 ">
-        <div className="auth-button ">
+      <div
+        ref={containerRef}
+        className="md:grid md:grid-cols-2 flex flex-col items-center"
+      >
+        <div className="auth-button">
           <AuthButton
             Icon={Google}
             name="google"

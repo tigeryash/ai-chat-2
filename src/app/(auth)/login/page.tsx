@@ -52,7 +52,7 @@ const Login = () => {
   return (
     <Form
       ref={formRef}
-      className="w-full max-w-md space-y-4 flex flex-col items-center justify-center "
+      className="w-full max-w-md space-y-4 flex flex-col items-center justify-center px-2 "
       errors={errors}
       onClearErrors={setErrors}
       onSubmit={async (event) => {
@@ -62,7 +62,7 @@ const Login = () => {
     >
       <Field.Root
         name="email"
-        className="flex flex-col w-[20rem] space-y-2 form-root"
+        className="flex flex-col w-full space-y-2 form-root"
       >
         <Field.Label className="text-xl font-semibold text-sky-900">
           Email
@@ -76,7 +76,7 @@ const Login = () => {
       </Field.Root>
       <Field.Root
         name="password"
-        className="flex flex-col w-[20rem] space-y-2 form-root"
+        className="flex flex-col w-full space-y-2 form-root"
       >
         <Field.Label className="text-xl font-semibold text-sky-900">
           Password
@@ -90,7 +90,7 @@ const Login = () => {
       </Field.Root>
       <button
         type="submit"
-        className="py-3 px-4 rounded-xl border border-black hover:bg-white w-[20rem]
+        className="py-3 px-4 rounded-xl border border-black hover:bg-white w-full
          hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg 
          hover:border-white text-lg overflow-hidden cursor-pointer"
       >

@@ -54,10 +54,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
   return (
-    <main className="flex min-h-screen gradient overflow-hidden">
+    <main className="flex flex-col-reverse items-center xl:flex-row min-h-screen gradient overflow-hidden">
       <div
         ref={containerRef}
-        className="space-y-7 flex-2/3 px-10 pt-24 pb-12 text-gray-300 min-h-screen flex flex-col "
+        className="space-y-7 xl:flex-2/3 px-10 pt-24 pb-12 text-gray-300 min-h-screen flex flex-col "
       >
         {/* <Image
           src="/next.svg"
@@ -115,9 +115,12 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         </footer>
       </div>
 
-      <div id="auth" className="flex-1/3 min-h-screen p-5 ">
-        <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full">
-          <h2 className="text-4xl font-semibold capitalize">
+      <div
+        id="auth"
+        className="xl:flex-1/3 xl:min-h-screen p-3 xl:p-5 w-full md:w-[600px]"
+      >
+        <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full py-10">
+          <h2 className="text-4xl font-semibold capitalize ">
             {pathname.split("/")}
           </h2>
           {children}
