@@ -1,39 +1,52 @@
 "use client";
-import { OpenAI, Claude, Gemini, DeepSeek } from "@lobehub/icons";
-import { useState } from "react";
+import {
+  OpenAI,
+  Claude,
+  Gemini,
+  DeepSeek,
+  Moonshot,
+  ZAI,
+  Grok,
+  Qwen,
+  Meta,
+} from "@lobehub/icons";
 
 const modelIcons = {
+  openai: {
+    Icon: OpenAI.Combine,
+  },
   claude: {
-    Icon: Claude,
-    ColorIcon: Claude.Color,
+    Icon: Claude.Combine,
   },
   gemini: {
-    Icon: Gemini,
-    ColorIcon: Gemini.Color,
+    Icon: Gemini.Combine,
   },
   deepseek: {
-    Icon: DeepSeek,
-    ColorIcon: DeepSeek.Color,
+    Icon: DeepSeek.Combine,
+  },
+  qwen: {
+    Icon: Qwen.Combine,
+  },
+  grok: {
+    Icon: Grok.Combine,
+  },
+  kimi: {
+    Icon: Moonshot.Combine,
+  },
+  zai: {
+    Icon: ZAI.Combine,
+  },
+  llama: {
+    Icon: Meta.Combine,
   },
 };
 
 const Models = () => {
-  const [hoveredModel, setHoveredModel] = useState<string | null>(null);
-
   return (
-    <div className="grid grid-cols-4 gap-4 justify-center">
-      <OpenAI size={120} className="" />
-      {Object.entries(modelIcons).map(([model, { Icon, ColorIcon }]) => (
-        <div
-          key={model}
-          onMouseEnter={() => setHoveredModel(model)}
-          onMouseLeave={() => setHoveredModel(null)}
-        >
-          {hoveredModel === model ? (
-            <ColorIcon size={120} />
-          ) : (
-            <Icon size={120} />
-          )}
+    <div className="grid grid-cols-2 gap-4 justify-items-center items-center ">
+      {Object.entries(modelIcons).map(([model, { Icon }]) => (
+        <div key={model}>
+          <Icon size={120} />
         </div>
       ))}
     </div>

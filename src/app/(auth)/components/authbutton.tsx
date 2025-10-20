@@ -27,7 +27,7 @@ const AuthButton = ({
     >
       {Icon && <Icon size={22} />}
       {image && <Image src={image} alt="" width={20} height={20} />}
-      Continue with {name}
+      {name}
     </button>
   );
 };

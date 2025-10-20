@@ -54,10 +54,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
   return (
-    <main className="flex flex-col-reverse items-center xl:flex-row min-h-screen gradient overflow-hidden">
+    <main className="flex flex-col-reverse items-center xl:flex-row h-screen lg:space-x-6 overflow-hidden p-6 bg-slate-900">
       <div
         ref={containerRef}
-        className="space-y-7 xl:flex-2/3 px-10 pt-24 pb-12 text-gray-300 min-h-screen flex flex-col "
+        className="space-y-7 xl:flex-2/3 px-10 pt-24 pb-12 text-gray-300 h-full flex flex-col rounded-2xl gradient"
       >
         {/* <Image
           src="/next.svg"
@@ -78,7 +78,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         </h1>
         <p
           id="subtitle"
-          className="text-2xl font-semibold leading-10"
+          className="text-2xl font-semibold leading-10 text-pretty"
           style={{
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           }}
@@ -90,7 +90,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
             href="https://lmarena.ai/leaderboard"
             target="_blank"
           >
-            lmarena&apos;s leaderboard.
+            lmarena&apos;s leaderboard.{" "}
           </Link>
           Built with Nextjs, TailwindCSS, better-auth, drizzle, neondb, gsap,
           and Vercel AI SDK
@@ -115,11 +115,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         </footer>
       </div>
 
-      <div
-        id="auth"
-        className="xl:flex-1/3 xl:min-h-screen p-3 xl:p-5 w-full md:w-[600px]"
-      >
-        <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full py-10">
+      <div id="auth" className="xl:flex-1/3   w-full md:w-[600px] lg:h-full">
+        <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full">
           <h2 className="text-4xl font-semibold capitalize ">
             {pathname.split("/")}
           </h2>

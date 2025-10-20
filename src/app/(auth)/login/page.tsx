@@ -62,7 +62,7 @@ const Login = () => {
     >
       <Field.Root
         name="email"
-        className="flex flex-col w-full space-y-2 form-root"
+        className="flex flex-col w-full space-y-2 form-root "
       >
         <Field.Label className="text-xl font-semibold text-sky-900">
           Email
