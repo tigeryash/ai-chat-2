@@ -57,16 +57,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <main className="flex flex-col-reverse items-center xl:flex-row h-screen lg:space-x-6 overflow-hidden p-6 bg-slate-900">
       <div
         ref={containerRef}
-        className="space-y-7 xl:flex-2/3 px-10 pt-24 pb-12 text-gray-300 h-full flex flex-col rounded-2xl gradient"
+        className="space-y-7 xl:w-2/3  pt-24 pb-12 text-gray-300 h-full flex flex-col rounded-2xl gradient"
       >
-        {/* <Image
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        /> */}
-
         <h1
           id="title"
           className="text-8xl font-bold  py-4"
@@ -115,7 +107,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         </footer>
       </div>
 
-      <div id="auth" className="xl:flex-1/3   w-full md:w-[600px] lg:h-full">
+      <div id="auth" className="xl:w-1/3   w-full md:w-[600px] lg:h-full">
         <div className="inset-shadow-lg bg-slate-300 flex flex-col justify-center items-center space-y-10 rounded-2xl h-full">
           <h2 className="text-4xl font-semibold capitalize ">
             {pathname.split("/")}

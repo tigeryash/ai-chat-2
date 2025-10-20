@@ -1,5 +1,11 @@
 "use client";
 import {
+  MarqueeContent,
+  MarqueeFade,
+  Marquee,
+  MarqueeItem,
+} from "@/components/ui/shadcn-io/marquee";
+import {
   OpenAI,
   Claude,
   Gemini,
@@ -10,45 +16,35 @@ import {
   Qwen,
   Meta,
 } from "@lobehub/icons";
+import { useMemo } from "react";
 
 const modelIcons = {
-  openai: {
-    Icon: OpenAI.Combine,
-  },
-  claude: {
-    Icon: Claude.Combine,
-  },
-  gemini: {
-    Icon: Gemini.Combine,
-  },
-  deepseek: {
-    Icon: DeepSeek.Combine,
-  },
-  qwen: {
-    Icon: Qwen.Combine,
-  },
-  grok: {
-    Icon: Grok.Combine,
-  },
-  kimi: {
-    Icon: Moonshot.Combine,
-  },
-  zai: {
-    Icon: ZAI.Combine,
-  },
-  llama: {
-    Icon: Meta.Combine,
-  },
-};
+  openai: OpenAI.Combine,
+  claude: Claude.Combine,
+  gemini: Gemini.Combine,
+  deepseek: DeepSeek.Combine,
+  qwen: Qwen.Combine,
+  grok: Grok.Combine,
+  kimi: Moonshot.Combine,
+  zai: ZAI.Combine,
+  llama: Meta.Combine,
+} as const;
 
 const Models = () => {
+  const modelEntries = useMemo(() => Object.entries(modelIcons), []);
   return (
-    <div className="grid grid-cols-2 gap-4 justify-items-center items-center ">
-      {Object.entries(modelIcons).map(([model, { Icon }]) => (
-        <div key={model}>
-          <Icon size={120} />
-        </div>
-      ))}
+    <div className="flex items-center justify-center w-full max-w-full overflow-hidden">
+      <Marquee className="w-full">
+        <MarqueeFade side="left" />
+        <MarqueeFade side="right" />
+        <MarqueeContent pauseOnHover={true}>
+          {modelEntries.map(([model, Icon]) => (
+            <MarqueeItem key={model}>
+              <Icon size={80} type="color" />
+            </MarqueeItem>
+          ))}
+        </MarqueeContent>
+      </Marquee>
     </div>
   );
 };
