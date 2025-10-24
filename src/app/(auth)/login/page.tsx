@@ -42,7 +42,7 @@ const Login = () => {
           y: 0,
           duration: 1.1,
           stagger: 0.1,
-          ease: "power4.inOut",
+          ease: "power2.inOut",
           delay: 0.1,
         }
       );

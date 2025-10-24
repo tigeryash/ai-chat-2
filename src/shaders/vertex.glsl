@@ -6,7 +6,7 @@ uniform float uTime;
 varying vec2 vUv;
 
 void main() {
-  vec3 noiseInput = vec3(position.x / 4.0,( position.y / 4.0) , uTime * 0.2);
+  vec3 noiseInput = vec3(position.x / 2.0,( position.y / 2.0) , uTime * 0.05);
   float n = noise(noiseInput);
   n = n * 0.5 + 0.5;
   

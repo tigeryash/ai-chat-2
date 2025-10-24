@@ -27,7 +27,7 @@ const OAuthButtons = () => {
           y: 0,
           stagger: 0.1,
           duration: 0.3,
-          ease: "power4.in",
+          ease: "power2.inOut",
           delay: 0.12,
         }
       );
@@ -44,10 +44,10 @@ const OAuthButtons = () => {
   };
   return (
     <>
-      <div className="border-t border-black/30 h-[1px] w-[85%] mx-auto relative">
-        <div className="absolute top-[-1rem] left-1/2 transform -translate-x-1/2 bg-slate-300 px-2 text-black/70">
-          or sign in with
-        </div>
+      <div className="relative w-full flex items-center justify-center px-4 space-x-1">
+        <div className="bg-black h-[.5px] w-[85%]  " />
+        <div className="text-nowrap text-black/70">or sign in with</div>
+        <div className="bg-black h-[.5px] w-[85%] " />
       </div>
       <div
         ref={containerRef}

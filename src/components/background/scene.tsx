@@ -14,7 +14,7 @@ type Uniforms = {
 };
 
 const WaveMaterial = shaderMaterial(
-  { time: 0, color: new THREE.Color(0.2, 0.0, 0.1) },
+  { uTime: 0, color: new THREE.Color(0.2, 0.0, 0.1) },
   vertexShader,
   fragmentShader
 );
@@ -41,7 +41,7 @@ const WaveMesh = () => {
   });
 
   return (
-    <mesh ref={ref} rotation-x={-1}>
+    <mesh rotation={[-0.9, 0, 0]} position={[0, 0, -5]}>
       <planeGeometry args={[10, 10, 180, 180]} />
       <waveMaterial color={new THREE.Color("blue")} ref={ref} uTime={0} />
     </mesh>
@@ -50,12 +50,21 @@ const WaveMesh = () => {
 
 const Scene = () => {
   return (
-    <div className="absolute w-full h-full z-0 inset-0">
-      <Canvas camera={{ position: [0, 0, 1], fov: 45 }}>
+    <div className="absolute z-0 inset-3 rounded-2xl m-0 p-0">
+      <Canvas
+        camera={{ position: [0, 0, 1], fov: 45 }}
+        style={{
+          margin: 0,
+          padding: 0,
+          width: "100%",
+          height: "100%",
+          borderRadius: "20px",
+        }}
+      >
         <OrbitControls />
         <color attach="background" args={["#000"]} />
 
-        <ambientLight intensity={1.3} />
+        <ambientLight intensity={1.5} />
         <WaveMesh />
       </Canvas>
       <Leva collapsed />
