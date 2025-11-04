@@ -41,7 +41,7 @@ const WaveMesh = () => {
   });
 
   return (
-    <mesh rotation={[-0.9, 0, 0]} position={[0, 0, -5]}>
+    <mesh rotation={[-0.86, 0, 0]} position={[0, 0, -2]}>
       <planeGeometry args={[10, 10, 180, 180]} />
       <waveMaterial color={new THREE.Color("blue")} ref={ref} uTime={0} />
     </mesh>

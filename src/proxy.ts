@@ -1,8 +1,8 @@
 import { betterFetch } from "@better-fetch/fetch";
-import type { auth } from "@/lib/auth";
+import type { getSession } from "../convex/auth";
 import { NextRequest, NextResponse } from "next/server";
  
-type Session = typeof auth.$Infer.Session;
+type Session = typeof getSession.$Infer.Session;
  
 export async function middleware(request: NextRequest) {
 	const { data: session } = await betterFetch<Session>("/api/auth/get-session", {

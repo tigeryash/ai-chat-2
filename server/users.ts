@@ -1,5 +1,5 @@
 "use server";
-import { auth } from "@/lib/auth";
+import { createAuth } from "../convex/auth";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 

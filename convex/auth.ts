@@ -1,14 +1,26 @@
 import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { db } from "@/db";
+import { createClient, type GenericCtx } from "@convex-dev/better-auth";
 import { nextCookies } from "better-auth/next-js";
-import { phoneNumber, anonymous, emailOTP } from "better-auth/plugins";
-import { headers } from "next/headers";
+import { phoneNumber, anonymous, emailOTP, twoFactor } from "better-auth/plugins";
+import { convex } from "@convex-dev/better-auth/plugins";
+import { DataModel } from "./_generated/dataModel";
+import { components } from "./_generated/api";
 
-export const auth = betterAuth({
-  database: drizzleAdapter(db, {
-    provider: "pg",
-  }),
+const siteUrl = process.env.SITE_URL!;
+
+export const authComponent = createClient<DataModel>(components.betterAuth);
+
+export const createAuth = (
+  ctx: GenericCtx<DataModel>,
+  { optionsOnly } = { optionsOnly: false },
+) => {
+  return betterAuth({
+  logger: {
+    disabled: optionsOnly,
+  },
+  baseURL: siteUrl,
+  
+  database: authComponent.adapter(ctx),
 
   emailAndPassword: {
     enabled: true,
@@ -42,17 +54,19 @@ export const auth = betterAuth({
     },
   },
   plugins: [
+    convex(),
     phoneNumber({
-      sendOTP: ({ phoneNumber, code }, request) => {
+      sendOTP: ({ phoneNumber, code }) => {
         // Implement sending OTP code via SMS
         console.log(`Sending SMS OTP ${code} to ${phoneNumber}`);
       },
       otpLength: 6,
       expiresIn: 600,
     }),
+    twoFactor(),
     anonymous(),
     emailOTP({
-      async sendVerificationOTP({ email, otp, type }) {
+      async sendVerificationOTP({ email, otp }) {
         // Implement the sendVerificationOTP method to send the OTP to the user's email address
         console.log(`Sending email OTP ${otp} to ${email}`);
       },
@@ -61,9 +75,6 @@ export const auth = betterAuth({
     }),
     nextCookies(),
   ],
-});
+})
+};
 
-export const getSession = async () =>
-  auth.api.getSession({
-    headers: await headers(),
-  });

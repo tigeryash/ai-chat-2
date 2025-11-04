@@ -67,7 +67,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div
         id="auth"
-        className="xl:w-1/3  md:w-[600px] lg:h-full text-black z-2 w-full"
+        className="xl:w-1/3  md:w-[600px] lg:h-full text-black z-2 w-full p-2 pl-0"
       >
         <FormContainer pathname={pathname}>{children}</FormContainer>
       </div>
@@ -85,7 +85,8 @@ const FormContainer = ({
   pathname: string;
 }) => {
   return (
-    <div className="inset-shadow-lg bg-slate-300/30 flex flex-col pt-10 justify-center items-center space-y-10 rounded-2xl backdrop-blur-md border-[2px] border-white/20">
+    <div className="inset-shadow-lg bg-slate-300/30 flex flex-col pt-10 justify-center 
+    items-center space-y-10 rounded-2xl backdrop-blur-md border-[2px] lg:pt-6  lg:space-y-6 lg:h-full border-white/20">
       <h2 className="text-4xl font-semibold capitalize ">
         {pathname.split("/")}
       </h2>

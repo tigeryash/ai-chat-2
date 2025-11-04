@@ -33,13 +33,16 @@ const modelIcons = {
 const Models = () => {
   const modelEntries = useMemo(() => Object.entries(modelIcons), []);
   return (
-    <div className="flex items-center justify-center max-w-screen overflow-hidden mt-32">
-      <Marquee className="w-full overflow-hidden">
-        <MarqueeContent pauseOnHover={true} className="overflow-hidden">
+    <div className="flex items-center justify-center max-w-screen mt-32"
+
+    >
+      <Marquee className="w-full  "
+      >
+        <MarqueeContent pauseOnHover={true} className="">
           {modelEntries.map(([model, Icon]) => (
             <MarqueeItem
               key={model}
-              className="hover:scale-105 transition-all duration-300"
+              className=""
             >
               <Icon size={80} type="color" className="" />
             </MarqueeItem>
