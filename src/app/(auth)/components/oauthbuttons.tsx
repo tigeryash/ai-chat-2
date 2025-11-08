@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 import {
   signInAnonymously,
   signInWithProvider,
-} from "../../../../server/users";
+} from "../../../lib/auth-actions";
 
 const OAuthButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
