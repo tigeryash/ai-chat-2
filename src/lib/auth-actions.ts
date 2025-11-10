@@ -117,10 +117,12 @@ export const verifyEmailOTP = async (email: string, otp: string) => {
 // PHONE NUMBER AUTHENTICATION
 // ============================================
 
-export const sendPhoneOTP = async (phoneNumber: string) => {
+export const signInWithPhone = async (phoneNumber: string, password: string, rememberMe: boolean) => {
   try {
-    const { data, error } = await authClient.phoneNumber.verify({
+    const { data, error } = await authClient.signIn.phoneNumber({
       phoneNumber,
+      password,
+      rememberMe
     });
     
     if (error) {
@@ -129,12 +131,59 @@ export const sendPhoneOTP = async (phoneNumber: string) => {
     
     return { success: true, data };
   } catch (error) {
+    console.error("Sign in with phone error:", error);
+    return { success: false, error: "Failed to send OTP" };
+  }
+};
+
+export const sendPhoneOTP = async (phoneNumber: string) => {
+  try {
+    const { data, error } = await authClient.phoneNumber.sendOtp({
+      phoneNumber,
+    });
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    return { success: true, data };
+  } catch (error) {
     console.error("Send phone OTP error:", error);
     return { success: false, error: "Failed to send OTP" };
   }
 };
 
+export const verifyPhoneOTP = async (phoneNumber: string, code: string, updatePhoneNumber: boolean) => {
+  try {
+    const { data, error } = await authClient.phoneNumber.verify({
+      phoneNumber,
+      code,
+      updatePhoneNumber,
+    });
+    if (error) {
+      return { success: false, error: error.message };
+    }
 
+    return { success: true, data };
+  } catch (error) {
+    console.error("Verify phone OTP error:", error);
+    return { success: false, error: "Failed to verify OTP" };
+  }
+};
+
+export const resetPasswordWithPhone = async (otp: string, phoneNumber: string, newPassword: string) => {
+  try {
+const { data, error } = await authClient.phoneNumber.resetPassword({
+    otp,
+    phoneNumber,
+    newPassword,
+});
+  }
+  catch (error) {
+    console.error("Reset password with phone error:", error);
+    return { success: false, error: "Failed to reset password" };
+  }
+};  
 
 export const resetPassword = async (
   email: string,

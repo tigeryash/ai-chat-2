@@ -62,6 +62,12 @@ export const createAuth = (
       },
       otpLength: 6,
       expiresIn: 600,
+      signUpOnVerification: {
+                getTempEmail: (phoneNumber) => {
+                    return `${phoneNumber}@my-site.com`
+                },
+                
+            }
     }),
     twoFactor(),
     anonymous(),
