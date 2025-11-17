@@ -9,6 +9,7 @@ import Models from "./components/models";
 import OAuthButtons from "./components/oauthbuttons";
 import { usePathname } from "next/navigation";
 import Scene from "@/components/background/scene";
+import { Leva } from "leva";
 
 gsap.registerPlugin(SplitText);
 
@@ -56,6 +57,8 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="flex relative flex-col-reverse items-center xl:flex-row min-h-screen lg:h-screen  overflow-hidden p-6 md:p-3 bg-slate-900">
       <Scene />
+            <Leva collapsed />
+
       <div
         ref={containerRef}
         className="space-y-7 xl:w-full pt-10 md:pt-24 pb-12 text-gray-300 h-full flex flex-col  md:rounded-2xl relative overflow-hidden"
