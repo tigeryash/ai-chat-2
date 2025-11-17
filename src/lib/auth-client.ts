@@ -7,6 +7,6 @@ import { convexClient } from "@convex-dev/better-auth/client/plugins";
 
 
 export const authClient = createAuthClient({
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.NEXT_PUBLIC_CONVEX_SITE_URL,
     plugins: [convexClient(),phoneNumberClient(),anonymousClient(),emailOTPClient()]
 })

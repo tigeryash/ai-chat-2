@@ -23,9 +23,11 @@ type Session = {
 };
 
 export async function proxy(request: NextRequest) {
+  const baseURL = process.env.NEXT_PUBLIC_CONVEX_SITE_URL || request.nextUrl.origin;
+
   try {
     const { data: session } = await betterFetch<Session>("/api/auth/get-session", {
-      baseURL: request.nextUrl.origin,
+      baseURL,
       headers: {
         cookie: request.headers.get("cookie") || "",
       },

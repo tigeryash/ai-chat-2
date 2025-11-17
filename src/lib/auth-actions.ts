@@ -12,6 +12,13 @@ export const signIn = async (email: string, password: string) => {
     const result = await authClient.signIn.email({
         email,
         password,
+    },{
+        onError: (ctx) => {
+      if (ctx.error.status === 403) {
+        alert("Please verify your email address");
+      }
+      alert(ctx.error.message);
+    },
     });
 
     if (result.data?.user) {
@@ -171,6 +178,10 @@ export const verifyPhoneOTP = async (phoneNumber: string, code: string, updatePh
   }
 };
 
+// ============================================
+// PASSWORD MANAGEMENT
+// ============================================
+
 export const resetPasswordWithPhone = async (otp: string, phoneNumber: string, newPassword: string) => {
   try {
 const { data, error } = await authClient.phoneNumber.resetPassword({
@@ -186,15 +197,14 @@ const { data, error } = await authClient.phoneNumber.resetPassword({
 };  
 
 export const resetPassword = async (
-  email: string,
-  otp: string,
-  password: string
+  token: string,
+  newPassword: string
 ) => {
   try {
-    const { data, error } = await authClient.emailOtp.resetPassword({
-      email,
-      otp,
-      password,
+    const { data, error } = await authClient.resetPassword({
+      
+      token,
+      newPassword,
     });
     
     if (error) {
@@ -207,3 +217,98 @@ export const resetPassword = async (
     return { success: false, error: "Failed to reset password" };
   }
 }
+
+export const forgotPassword = async (email: string) => {
+  try {
+    const { data, error } = await authClient.forgetPassword({
+      email,
+      redirectTo: "/reset-password",
+    });
+    
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    
+    return { success: true, data };
+  } catch (error) {
+    console.error("Forgot password error:", error);
+    return { success: false, error: "Failed to send reset email" };
+  }
+};
+
+export const changePassword = async (currentPassword: string, newPassword: string, revokeOtherSessions?: boolean
+) => {
+    try {
+    const { data, error } = await authClient.changePassword({
+        currentPassword,
+        newPassword,
+        revokeOtherSessions,
+    });
+}    catch (error) {
+    console.error("Change password error:", error);
+    return { success: false, error: "Failed to change password" };
+  } 
+}
+
+// ============================================
+// EMAIL VERIFICATION
+// ============================================
+
+export const resendVerificationEmail = async (email: string) => {
+  try {
+    const { data, error } = await authClient.sendVerificationEmail({
+      email,
+    });
+    
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    
+    return { success: true, data };
+  } catch (error) {
+    console.error("Resend verification error:", error);
+    return { success: false, error: "Failed to resend verification email" };
+  }
+};
+
+export const verifyEmail = async (email: string, callbackURL: string) => {
+  try {
+    const { data, error } = await authClient.sendVerificationEmail({
+      email,
+      callbackURL,
+    });
+    
+    if (error) {
+      return { success: false, error: error.message };
+    }
+    
+    return { success: true, data };
+  } catch (error) {
+    console.error("Verify email error:", error);
+    return { success: false, error: "Failed to verify email" };
+  }
+};
+
+// ============================================
+// SESSION MANAGEMENT
+// ============================================
+
+export const signOut = async () => {
+  try {
+    await authClient.signOut();
+    redirect("/login");
+  } catch (error) {
+    console.error("Sign out error:", error);
+    return { success: false, error: "Failed to sign out" };
+  }
+};
+
+export const getSession = async () => {
+  try {
+    const { data } = await authClient.getSession();
+    return { success: true, session: data };
+  } catch (error) {
+    console.error("Get session error:", error);
+    return { success: false, session: null };
+  }
+};

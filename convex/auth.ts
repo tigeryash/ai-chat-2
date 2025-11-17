@@ -5,6 +5,7 @@ import { phoneNumber, anonymous, emailOTP, twoFactor } from "better-auth/plugins
 import { convex } from "@convex-dev/better-auth/plugins";
 import { DataModel } from "./_generated/dataModel";
 import { components } from "./_generated/api";
+import { sendEmail } from "./email";
 
 const siteUrl = process.env.SITE_URL!;
 
@@ -28,6 +29,32 @@ export const createAuth = (
     maxPasswordLength: 128,
     autoSignIn: true,
     requireEmailVerification: true,
+    password:{
+      hash: async (password: string) => {
+        // your hashing logic here
+        return password; // replace with hashed password
+      }
+    },
+    sendResetPassword: async ({user, url, token}, request) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Reset your password",
+        text: `Click the link to reset your password: ${url}`,
+      });
+    },
+    onPasswordReset: async ({ user }, request) => {
+      // your logic here
+      console.log(`Password for user ${user.email} has been reset.`);
+    },
+  },
+   emailVerification: {
+    sendVerificationEmail: async ( { user, url, token }, request) => {
+      await sendEmail({
+        to: user.email,
+        subject: "Verify your email address",
+        text: `Click the link to verify your email: ${url}`,
+      });
+    },
   },
   account: {
     accountLinking: {
