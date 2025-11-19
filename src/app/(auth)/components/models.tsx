@@ -33,7 +33,7 @@ const modelIcons = {
 const Models = () => {
   const modelEntries = useMemo(() => Object.entries(modelIcons), []);
   return (
-    <div className="flex items-center justify-center max-w-screen mt-32"
+    <div className="flex items-center justify-center max-w-screen mt-16"
 
     >
       <Marquee className="w-full  "

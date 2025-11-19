@@ -9,7 +9,6 @@ import Models from "./components/models";
 import OAuthButtons from "./components/oauthbuttons";
 import { usePathname } from "next/navigation";
 import Scene from "@/components/background/scene";
-import { Leva } from "leva";
 
 gsap.registerPlugin(SplitText);
 
@@ -57,11 +56,10 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <main className="flex relative flex-col-reverse items-center xl:flex-row min-h-screen lg:h-screen  overflow-hidden p-6 md:p-3 bg-slate-900">
       <Scene />
-            <Leva collapsed />
 
       <div
         ref={containerRef}
-        className="space-y-7 xl:w-full pt-10 md:pt-24 pb-12 text-gray-300 h-full flex flex-col  md:rounded-2xl relative overflow-hidden"
+        className="space-y-7 xl:w-full pt-10 md:pt-18 pb-12 text-gray-300 h-full flex flex-col  md:rounded-2xl relative overflow-hidden"
       >
         <Body />
 
@@ -104,7 +102,7 @@ const Body = () => {
     <>
       <h1
         id="title"
-        className="text-5xl md:text-8xl font-bold  py-4 px-10"
+        className="text-5xl md:text-8xl lg:text-9xl font-bold  py-4 px-10"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}
@@ -113,21 +111,21 @@ const Body = () => {
       </h1>
       <p
         id="subtitle"
-        className="text-2xl font-semibold leading-10 text-pretty px-10"
+        className="text-3xl font-semibold leading-10 text-pretty px-10"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}
       >
-        Chat with the smartest <span className="text-blue-500">AI</span> found
+        Chat with the smartest <span className="text-[oklch(70%.1375_229)]">AI</span> found
         at the top of the{" "}
         <Link
-          className="hover:underline text-blue-500"
+          className="hover:underline text-[oklch(70%.1375_229)]"
           href="https://lmarena.ai/leaderboard"
           target="_blank"
         >
           LMArena&apos;s leaderboard.{" "}
         </Link>
-        Built with Nextjs, TailwindCSS, better-auth, drizzle, neondb, gsap, and
+        Built with Nextjs, TailwindCSS, Better-Auth, Convex, GSAP, React Three Fiber and
         Vercel AI SDK
       </p>
     </>

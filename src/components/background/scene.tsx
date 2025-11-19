@@ -17,10 +17,10 @@ const WaveMaterial = shaderMaterial(
     {uTime: 0,
       uColors: [
       new THREE.Color('#0f172a'), // Dark Slate
-      new THREE.Color('#3b82f6'), // Blue
-      new THREE.Color('#8b5cf6'), // Violet
-      new THREE.Color('#06b6d4'), // Cyan
-      new THREE.Color('#ec4899'), // Pink
+      new THREE.Color('#BD285E'), // Blue
+      new THREE.Color('#600F75'), // Violet
+      new THREE.Color('#DB041C'), // Cyan
+      new THREE.Color('#6E343B'), // Pink
     ]
   },
   vertexShader,
@@ -57,18 +57,7 @@ const WaveMesh = () => {
 };
 
 const Scene = () => {
-  const {cameraPosition, rotation} = useControls({
-    cameraPosition: {
-      value: [0, -.4 , .2],
-      min: -10,
-      max: 10,
-      step: 0.1,
-    },
-    rotation: {
-      value: [0.09, 0, 0],
-      step: 0.01,
-    },
-  })
+
   return (
     <div className="absolute z-0 inset-3 rounded-2xl m-0 p-0">
       <Canvas
@@ -81,7 +70,7 @@ const Scene = () => {
           borderRadius: "20px",
         }}
       >
-        <PerspectiveCamera makeDefault position={ cameraPosition} rotation={rotation} />
+        <PerspectiveCamera makeDefault position={ [0, -.4 , .2]} rotation={[0.09, 0, 0]} />
 
         <color attach="background" args={["#000"]} />
 
