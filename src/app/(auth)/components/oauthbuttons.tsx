@@ -1,16 +1,13 @@
 "use client";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import AuthButton from "./authbutton";
 import { Google } from "@lobehub/icons";
 import { Github } from "@lobehub/icons";
-import { Phone, User } from "lucide-react";
 import DiscordIcon from "../../../../public/discord-icon.svg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import {
-  signInAnonymously,
-  signInWithProvider,
-} from "../../../lib/auth-actions";
+import { authClient } from "@/lib/auth-client";
+
 
 const OAuthButtons = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,13 +32,12 @@ const OAuthButtons = () => {
     { scope: containerRef }
   );
 
-  const handleProviderSignIn = async (provider: string) => {
-    await signInWithProvider(provider);
-  };
+ const handleProviderSignIn = async (provider: string) => {
+    await authClient.signIn.social({
+        provider: provider as "google" | "github" | "discord" 
+    });
+};
 
-  const handleAnonymousSignIn = async () => {
-    await signInAnonymously();
-  };
   return (
     <>
       <div className="relative w-full flex items-center justify-center px-4 space-x-1">
@@ -51,7 +47,7 @@ const OAuthButtons = () => {
       </div>
       <div
         ref={containerRef}
-        className="md:grid md:grid-cols-2 flex flex-col items-center"
+        className="md:grid md:grid-cols-3 flex flex-col items-center gap-4"
       >
         <div className="auth-button">
           <AuthButton
@@ -72,20 +68,6 @@ const OAuthButtons = () => {
             image={DiscordIcon}
             name="discord"
             onClick={() => handleProviderSignIn("discord")}
-          />
-        </div>
-        <div className="auth-button ">
-          <AuthButton
-            Icon={Phone}
-            name="phone"
-            onClick={() => handleProviderSignIn("phone")}
-          />
-        </div>
-        <div className="auth-button col-span-2 mx-auto">
-          <AuthButton
-            Icon={User}
-            name="anonymous"
-            onClick={handleAnonymousSignIn}
           />
         </div>
       </div>

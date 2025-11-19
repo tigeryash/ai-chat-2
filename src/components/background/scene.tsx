@@ -14,13 +14,13 @@ type Uniforms = {
 };
 
 const WaveMaterial = shaderMaterial(
-  { uTime: 0,  
-    uColors: [
-      new THREE.Color('#ff0080'),
-      new THREE.Color('#ff8c00'),
-      new THREE.Color('#ffff00'),
-      new THREE.Color('#00ff80'),
-      new THREE.Color('#0080ff'), // base color
+    {uTime: 0,
+      uColors: [
+      new THREE.Color('#0f172a'), // Dark Slate
+      new THREE.Color('#3b82f6'), // Blue
+      new THREE.Color('#8b5cf6'), // Violet
+      new THREE.Color('#06b6d4'), // Cyan
+      new THREE.Color('#ec4899'), // Pink
     ]
   },
   vertexShader,

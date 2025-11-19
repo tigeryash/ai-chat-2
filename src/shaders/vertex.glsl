@@ -7,7 +7,8 @@ varying vec2 vUv;
 varying vec3 vColor;
 
 void main() {
-  vec3 noiseInput = vec3(position.x / 2.0,( position.y / 2.0) , uTime * 0.05);
+  vec2 noiseCoord = uv * vec2(5.0, 6.0);
+  vec3 noiseInput = vec3(noiseCoord.x +uTime * 0.02, noiseCoord.y , uTime * 0.05);
   float n = noise(noiseInput);
   n = n * 0.5 + 0.5;
   

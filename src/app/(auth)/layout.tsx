@@ -70,7 +70,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div
         id="auth"
-        className="xl:w-1/3  md:w-[600px] lg:h-full text-black z-2 w-full p-2 pl-0"
+        className="xl:w-1/3  md:w-[600px] lg:h-full text-black z-2 w-full p-2 lg:pl-0"
       >
         <FormContainer pathname={pathname}>{children}</FormContainer>
       </div>
@@ -125,7 +125,7 @@ const Body = () => {
           href="https://lmarena.ai/leaderboard"
           target="_blank"
         >
-          lmarena&apos;s leaderboard.{" "}
+          LMArena&apos;s leaderboard.{" "}
         </Link>
         Built with Nextjs, TailwindCSS, better-auth, drizzle, neondb, gsap, and
         Vercel AI SDK
@@ -136,7 +136,7 @@ const Body = () => {
 
 const Footer = () => {
   return (
-    <footer className="text-gray-300 mt-auto self-center shadow-lg bg-gray-950/10 rounded-xl py-2 px-4">
+    <footer className="footer text-gray-300 mt-auto self-center shadow-lg bg-gray-950/10 rounded-xl py-2 px-4">
       <p>
         Project made by{" "}
         <Link

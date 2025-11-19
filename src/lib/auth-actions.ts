@@ -69,132 +69,132 @@ export const signInWithProvider = async (providerName: string) => {
 // ANONYMOUS AUTHENTICATION
 // ============================================
 
-export const signInAnonymously = async () => {
-    try{
-        const result = await authClient.signIn.anonymous();
-        return { success: true, data: result.data };
-    }
-    catch(error){
-            console.error("Anonymous sign in error:", error);
-    return { success: false, error: "Failed to sign in anonymously" };
-    }
-};
+// export const signInAnonymously = async () => {
+//     try{
+//         const result = await authClient.signIn.anonymous();
+//         return { success: true, data: result.data };
+//     }
+//     catch(error){
+//             console.error("Anonymous sign in error:", error);
+//     return { success: false, error: "Failed to sign in anonymously" };
+//     }
+// };
 
 // ============================================
 // EMAIL OTP AUTHENTICATION
 // ============================================
 
-export const sendEmailOTP = async (email: string) => {
-  try {
-    const { data, error } = await authClient.emailOtp.sendVerificationOtp({
-      email,
-      type: "sign-in",
-    });
+// export const sendEmailOTP = async (email: string) => {
+//   try {
+//     const { data, error } = await authClient.emailOtp.sendVerificationOtp({
+//       email,
+//       type: "sign-in",
+//     });
     
-    if (error) {
-      return { success: false, error: error.message };
-    }
+//     if (error) {
+//       return { success: false, error: error.message };
+//     }
     
-    return { success: true, data };
-  } catch (error) {
-    console.error("Send OTP error:", error);
-    return { success: false, error: "Failed to send OTP" };
-  }
-};  
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Send OTP error:", error);
+//     return { success: false, error: "Failed to send OTP" };
+//   }
+// };  
 
-export const verifyEmailOTP = async (email: string, otp: string) => {
-  try {
-    const { data, error } = await authClient.emailOtp.verifyEmail({
-      email,
-      otp,
-    });
+// export const verifyEmailOTP = async (email: string, otp: string) => {
+//   try {
+//     const { data, error } = await authClient.emailOtp.verifyEmail({
+//       email,
+//       otp,
+//     });
     
-    if (error) {
-      return { success: false, error: error.message };
-    }
+//     if (error) {
+//       return { success: false, error: error.message };
+//     }
     
-    return { success: true, data };
-  } catch (error) {
-    console.error("Verify OTP error:", error);
-    return { success: false, error: "Failed to verify OTP" };
-  }
-};
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Verify OTP error:", error);
+//     return { success: false, error: "Failed to verify OTP" };
+//   }
+// };
 
-// ============================================
-// PHONE NUMBER AUTHENTICATION
-// ============================================
+// // ============================================
+// // PHONE NUMBER AUTHENTICATION
+// // ============================================
 
-export const signInWithPhone = async (phoneNumber: string, password: string, rememberMe: boolean) => {
-  try {
-    const { data, error } = await authClient.signIn.phoneNumber({
-      phoneNumber,
-      password,
-      rememberMe
-    });
+// export const signInWithPhone = async (phoneNumber: string, password: string, rememberMe: boolean) => {
+//   try {
+//     const { data, error } = await authClient.signIn.phoneNumber({
+//       phoneNumber,
+//       password,
+//       rememberMe
+//     });
     
-    if (error) {
-      return { success: false, error: error.message };
-    }
+//     if (error) {
+//       return { success: false, error: error.message };
+//     }
     
-    return { success: true, data };
-  } catch (error) {
-    console.error("Sign in with phone error:", error);
-    return { success: false, error: "Failed to send OTP" };
-  }
-};
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Sign in with phone error:", error);
+//     return { success: false, error: "Failed to send OTP" };
+//   }
+// };
 
-export const sendPhoneOTP = async (phoneNumber: string) => {
-  try {
-    const { data, error } = await authClient.phoneNumber.sendOtp({
-      phoneNumber,
-    });
+// export const sendPhoneOTP = async (phoneNumber: string) => {
+//   try {
+//     const { data, error } = await authClient.phoneNumber.sendOtp({
+//       phoneNumber,
+//     });
 
-    if (error) {
-      return { success: false, error: error.message };
-    }
+//     if (error) {
+//       return { success: false, error: error.message };
+//     }
 
-    return { success: true, data };
-  } catch (error) {
-    console.error("Send phone OTP error:", error);
-    return { success: false, error: "Failed to send OTP" };
-  }
-};
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Send phone OTP error:", error);
+//     return { success: false, error: "Failed to send OTP" };
+//   }
+// };
 
-export const verifyPhoneOTP = async (phoneNumber: string, code: string, updatePhoneNumber: boolean) => {
-  try {
-    const { data, error } = await authClient.phoneNumber.verify({
-      phoneNumber,
-      code,
-      updatePhoneNumber,
-    });
-    if (error) {
-      return { success: false, error: error.message };
-    }
+// export const verifyPhoneOTP = async (phoneNumber: string, code: string, updatePhoneNumber: boolean) => {
+//   try {
+//     const { data, error } = await authClient.phoneNumber.verify({
+//       phoneNumber,
+//       code,
+//       updatePhoneNumber,
+//     });
+//     if (error) {
+//       return { success: false, error: error.message };
+//     }
 
-    return { success: true, data };
-  } catch (error) {
-    console.error("Verify phone OTP error:", error);
-    return { success: false, error: "Failed to verify OTP" };
-  }
-};
+//     return { success: true, data };
+//   } catch (error) {
+//     console.error("Verify phone OTP error:", error);
+//     return { success: false, error: "Failed to verify OTP" };
+//   }
+// };
 
-// ============================================
-// PASSWORD MANAGEMENT
-// ============================================
+// // ============================================
+// // PASSWORD MANAGEMENT
+// // ============================================
 
-export const resetPasswordWithPhone = async (otp: string, phoneNumber: string, newPassword: string) => {
-  try {
-const { data, error } = await authClient.phoneNumber.resetPassword({
-    otp,
-    phoneNumber,
-    newPassword,
-});
-  }
-  catch (error) {
-    console.error("Reset password with phone error:", error);
-    return { success: false, error: "Failed to reset password" };
-  }
-};  
+// export const resetPasswordWithPhone = async (otp: string, phoneNumber: string, newPassword: string) => {
+//   try {
+// const { data, error } = await authClient.phoneNumber.resetPassword({
+//     otp,
+//     phoneNumber,
+//     newPassword,
+// });
+//   }
+//   catch (error) {
+//     console.error("Reset password with phone error:", error);
+//     return { success: false, error: "Failed to reset password" };
+//   }
+// };  
 
 export const resetPassword = async (
   token: string,

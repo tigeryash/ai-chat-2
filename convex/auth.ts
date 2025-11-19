@@ -1,7 +1,6 @@
 import { betterAuth } from "better-auth";
 import { createClient, type GenericCtx } from "@convex-dev/better-auth";
 import { nextCookies } from "better-auth/next-js";
-import { phoneNumber, anonymous, emailOTP, twoFactor } from "better-auth/plugins";
 import { convex } from "@convex-dev/better-auth/plugins";
 import { DataModel } from "./_generated/dataModel";
 import { components } from "./_generated/api";
@@ -29,12 +28,6 @@ export const createAuth = (
     maxPasswordLength: 128,
     autoSignIn: true,
     requireEmailVerification: true,
-    password:{
-      hash: async (password: string) => {
-        // your hashing logic here
-        return password; // replace with hashed password
-      }
-    },
     sendResetPassword: async ({user, url, token}, request) => {
       await sendEmail({
         to: user.email,
@@ -82,30 +75,30 @@ export const createAuth = (
   },
   plugins: [
     convex(),
-    phoneNumber({
-      sendOTP: ({ phoneNumber, code }) => {
-        // Implement sending OTP code via SMS
-        console.log(`Sending SMS OTP ${code} to ${phoneNumber}`);
-      },
-      otpLength: 6,
-      expiresIn: 600,
-      signUpOnVerification: {
-                getTempEmail: (phoneNumber) => {
-                    return `${phoneNumber}@my-site.com`
-                },
+    // phoneNumber({
+    //   sendOTP: ({ phoneNumber, code }) => {
+    //     // Implement sending OTP code via SMS
+    //     console.log(`Sending SMS OTP ${code} to ${phoneNumber}`);
+    //   },
+    //   otpLength: 6,
+    //   expiresIn: 600,
+    //   signUpOnVerification: {
+    //             getTempEmail: (phoneNumber) => {
+    //                 return `${phoneNumber}@my-site.com`
+    //             },
                 
-            }
-    }),
-    twoFactor(),
-    anonymous(),
-    emailOTP({
-      async sendVerificationOTP({ email, otp }) {
-        // Implement the sendVerificationOTP method to send the OTP to the user's email address
-        console.log(`Sending email OTP ${otp} to ${email}`);
-      },
-      otpLength: 6,
-      expiresIn: 600,
-    }),
+    //         }
+    // }),
+    // twoFactor(),
+    // anonymous(),
+    // emailOTP({
+    //   async sendVerificationOTP({ email, otp }) {
+    //     // Implement the sendVerificationOTP method to send the OTP to the user's email address
+    //     console.log(`Sending email OTP ${otp} to ${email}`);
+    //   },
+    //   otpLength: 6,
+    //   expiresIn: 600,
+    // }),
     nextCookies(),
   ],
 })
