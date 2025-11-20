@@ -24,22 +24,24 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       type: "lines",
     });
     gsap.set(title.chars, {
-      y: 100,
+      y: 200,
     });
     gsap.to(title.chars, {
       y: 0,
-      duration: 1,
+      delay: 0.27,
+      duration: 1.2,
       stagger: 0.03,
-      ease: "power4.out",
+      ease: "power2.inOut",
     });
     gsap.set(subtitle.lines, {
       y: 100,
     });
     gsap.to(subtitle.lines, {
       y: 0,
+      delay: 0.3,
       duration: 1.2,
       stagger: 0.075,
-      ease: "power4.out",
+      ease: "power2.inOut",
     });
     gsap.from("#auth", {
       opacity: 0,
@@ -54,12 +56,12 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     });
   }, []);
   return (
-    <main className="flex relative flex-col-reverse items-center xl:flex-row min-h-screen lg:h-screen  overflow-hidden p-6 md:p-3 bg-slate-900">
+    <main className="flex relative flex-col-reverse items-center xl:flex-row min-h-screen xl:h-screen  overflow-hidden p-6 md:p-3 bg-slate-900">
       <Scene />
 
       <div
         ref={containerRef}
-        className="space-y-7 xl:w-full pt-10 md:pt-18 pb-12 text-gray-300 h-full flex flex-col  md:rounded-2xl relative overflow-hidden"
+        className="space-y-7 xl:w-full pt-10 md:pt-18 pb-12 text-gray-300 h-full flex flex-col md:rounded-2xl relative overflow-hidden"
       >
         <Body />
 
@@ -68,7 +70,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       </div>
       <div
         id="auth"
-        className="xl:w-1/3  md:w-[600px] lg:h-full text-black z-2 w-full p-2 lg:pl-0"
+        className="xl:w-1/3  md:w-[600px] lg:h-full text-white z-2 w-full p-2 lg:pl-0"
       >
         <FormContainer pathname={pathname}>{children}</FormContainer>
       </div>
@@ -86,9 +88,9 @@ const FormContainer = ({
   pathname: string;
 }) => {
   return (
-    <div className="inset-shadow-lg bg-slate-300/30 flex flex-col pt-10 justify-center 
-    items-center space-y-10 rounded-2xl backdrop-blur-md border-[2px] lg:pt-6  lg:space-y-6 lg:h-full border-white/20">
-      <h2 className="text-4xl font-semibold capitalize ">
+    <div className="inset-shadow-lg bg-slate-300/30 flex flex-col py-10  
+    items-center space-y-5 xl:space-y-10 rounded-2xl backdrop-blur-md border-[2px] lg:pt-6  lg:space-y-6 lg:h-full border-white/20">
+      <h2 className="text-[2.5rem] font-semibold capitalize ">
         {pathname.split("/")}
       </h2>
       {children}
@@ -102,7 +104,7 @@ const Body = () => {
     <>
       <h1
         id="title"
-        className="text-5xl md:text-8xl lg:text-9xl font-bold  py-4 px-10"
+        className="text-4xl md:text-8xl lg:text-9xl font-bold  py-4 px-10"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}
@@ -111,7 +113,7 @@ const Body = () => {
       </h1>
       <p
         id="subtitle"
-        className="text-3xl font-semibold leading-10 text-pretty px-10"
+        className="text-2xl font-semibold leading-10  lg:text-pretty px-10"
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}

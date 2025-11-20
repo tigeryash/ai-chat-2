@@ -32,22 +32,22 @@ const OAuthButtons = () => {
     { scope: containerRef }
   );
 
- const handleProviderSignIn = async (provider: string) => {
+  const handleProviderSignIn = async (provider: string) => {
     await authClient.signIn.social({
-        provider: provider as "google" | "github" | "discord" 
+      provider: provider as "google" | "github" | "discord"
     });
-};
+  };
 
   return (
     <>
       <div className="relative w-full flex items-center justify-center px-4 space-x-1">
-        <div className="bg-black h-[.5px] w-[85%]  " />
-        <div className="text-nowrap text-black/70">or sign in with</div>
-        <div className="bg-black h-[.5px] w-[85%] " />
+        <div className="bg-white/70 h-[.5px] w-[85%]  " />
+        <div className="text-nowrap text-white/90">or sign in with</div>
+        <div className="bg-white/70 h-[.5px] w-[85%] " />
       </div>
       <div
         ref={containerRef}
-        className="md:grid md:grid-cols-3 flex flex-col items-center gap-4"
+        className="md:grid md:grid-cols-3 flex items-center gap-1 w-full px-3"
       >
         <div className="auth-button">
           <AuthButton

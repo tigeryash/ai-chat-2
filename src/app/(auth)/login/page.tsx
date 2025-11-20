@@ -64,12 +64,12 @@ const Login = () => {
         name="email"
         className="flex flex-col w-full space-y-2 form-root "
       >
-        <Field.Label className="text-xl font-semibold text-sky-900">
+        <Field.Label className="text-xl font-semibold text-white/90">
           Email
         </Field.Label>
         <Field.Control
           placeholder="Enter email"
-          className=" text-lg bg-slate-800 rounded-lg p-3 placeholder:text-slate-400 focus:outline-none focus:ring-2
+          className=" text-lg bg-[#101010]/60 hover:bg-[#101010]/80 focus:bg-[#101010]/80 rounded-lg p-3 placeholder:text-slate-400 focus:outline-none focus:ring-2
            focus:ring-blue-400 text-white"
         />
         <Field.Error className="" />
@@ -78,19 +78,19 @@ const Login = () => {
         name="password"
         className="flex flex-col w-full space-y-2 form-root"
       >
-        <Field.Label className="text-xl font-semibold text-sky-900">
+        <Field.Label className="text-xl font-semibold text-white/90">
           Password
         </Field.Label>
         <Field.Control
           placeholder="Enter password"
-          className=" text-lg bg-slate-800 rounded-lg p-3 placeholder:text-slate-400 focus:outline-none focus:ring-2
+          className=" text-lg bg-[#101010]/60 hover:bg-[#101010]/80 focus:bg-[#101010]/80 rounded-lg p-3 placeholder:text-slate-400 focus:outline-none focus:ring-2
            focus:ring-blue-400 text-white"
         />
         <Field.Error className="" />
       </Field.Root>
       <button
         type="submit"
-        className="py-3 px-4 rounded-xl border border-black hover:bg-white w-full
+        className="py-3 px-4 rounded-xl border border-white hover:bg-white w-full
          hover:text-black transition-all duration-300 hover:scale-105 hover:shadow-lg 
          hover:border-white text-lg overflow-hidden cursor-pointer"
       >
